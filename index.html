@@ -3,120 +3,181 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Mikye Media — curated premium social handles for Instagram, TikTok, X and Snapchat.">
-  <meta name="theme-color" content="#080807">
-  <title>Mikye Media — Premium Social Handles</title>
+  <meta name="description" content="Mikye Media — premium social username marketplace for Instagram, TikTok, X and Snapchat.">
+  <meta name="theme-color" content="#f6f6f3">
+  <title>Mikye Media — Username Marketplace</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
-
   <header class="site-header">
     <div class="wrap nav">
-      <a class="logo" href="#top" aria-label="Mikye Media home"><span>MIKYE</span><b>MEDIA</b></a>
-      <nav class="desktop-nav"><a href="#market">Marketplace</a><a href="#process">How it works</a><a href="#faq">FAQ</a></nav>
+      <a class="logo" href="#top" aria-label="Mikye Media home">
+        <span class="logo-mark">M</span>
+        <span>Mikye Media</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="#market">Handles</a>
+        <a href="#process">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
       <button class="nav-track" id="openOrders">Track order</button>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero wrap">
-      <div class="hero-copy">
-        <div class="kicker"><span class="pulse"></span> LIVE SOCIAL HANDLE MARKETPLACE</div>
-        <h1>Your next <span>@</span><br>starts here.</h1>
-        <p>Curated short usernames across Instagram, TikTok, X and Snapchat. Search thousands of available handles, pay with your preferred method, and receive transfer details after verification.</p>
-        <div class="hero-search">
-          <span class="search-at">@</span>
-          <input id="heroSearch" type="search" placeholder="Search a username" autocomplete="off" spellcheck="false">
-          <button id="heroSearchBtn">Search marketplace</button>
-        </div>
-        <div class="hero-trust"><span>Manual payment verification</span><span>Private supplier data</span><span>Email fulfillment</span></div>
-      </div>
-
-      <aside class="market-preview">
-        <div class="preview-top"><span>MARKET STATUS</span><b><i></i> LIVE</b></div>
-        <div class="preview-number"><strong id="statTotal">—</strong><span>available handles</span></div>
-        <div class="preview-grid">
-          <div><span>Platforms</span><strong>04</strong></div><div><span>Payments</span><strong>04</strong></div>
-        </div>
-        <div class="platform-stack">
-          <span class="platform-pill ig">IG</span><span class="platform-pill tt">TT</span><span class="platform-pill x">X</span><span class="platform-pill sc">SC</span>
-          <p>Instagram · TikTok · X · Snapchat</p>
-        </div>
-      </aside>
-    </section>
-
-    <section class="ticker" aria-hidden="true"><div>3L <span>•</span> 4L <span>•</span> WORDS <span>•</span> INSTAGRAM <span>•</span> TIKTOK <span>•</span> X / TWITTER <span>•</span> SNAPCHAT <span>•</span> 3L <span>•</span> 4L <span>•</span> WORDS</div></section>
-
-    <section class="wrap featured-section" id="featuredSection">
-      <div class="section-title"><div><span class="mini-label">CURATED PICKS</span><h2>Standout handles</h2></div><p>A rotating set of short and premium listings from the live inventory.</p></div>
-      <div id="featuredGrid" class="featured-grid"><div class="skeleton wide"></div><div class="skeleton wide"></div><div class="skeleton wide"></div></div>
-    </section>
-
-    <section id="market" class="wrap market-section">
-      <div class="section-title market-title"><div><span class="mini-label">LIVE INVENTORY</span><h2>Marketplace</h2></div><div class="result-copy"><strong id="resultCount">—</strong> matching handles</div></div>
-
-      <div class="market-panel">
-        <div class="market-search-row">
-          <div class="search-field"><span>@</span><input id="marketSearch" type="search" placeholder="Search handles" autocomplete="off" spellcheck="false"><button id="clearSearch" aria-label="Clear search">×</button></div>
-          <select id="sortSelect" aria-label="Sort inventory"><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="handle">Handle: A–Z</option></select>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">SOCIAL USERNAME MARKETPLACE</span>
+          <h1>Find a handle<br>that fits.</h1>
+          <p>Browse short and premium usernames across Instagram, TikTok, X and Snapchat. Search the live inventory, choose a listing, and submit your payment for manual verification.</p>
+          <div class="hero-search">
+            <span>@</span>
+            <input id="heroSearch" type="search" placeholder="Search usernames" autocomplete="off" spellcheck="false">
+            <button id="heroSearchBtn">Search</button>
+          </div>
+          <div class="hero-meta">
+            <div><strong id="statTotal">—</strong><span>available</span></div>
+            <div><strong>4</strong><span>platforms</span></div>
+            <div><strong>4</strong><span>payment methods</span></div>
+          </div>
         </div>
 
-        <div class="filters-row">
-          <div class="filter-block"><span class="filter-name">Platform</span><div class="chips" id="platformFilters">
-            <button class="active" data-platform="all">All</button><button data-platform="Instagram">Instagram</button><button data-platform="TikTok">TikTok</button><button data-platform="Twitter">X</button><button data-platform="Snapchat">Snapchat</button>
-          </div></div>
-          <div class="filter-block"><span class="filter-name">Type</span><div class="chips" id="kindFilters">
-            <button class="active" data-kind="all">All</button><button data-kind="2L">2L</button><button data-kind="3L">3L</button><button data-kind="4L">4L</button><button data-kind="Word">Words</button>
-          </div></div>
+        <div class="hero-side">
+          <div class="hero-side-label">What you can shop</div>
+          <div class="platform-list">
+            <div><span class="platform-icon ig">IG</span><strong>Instagram</strong><small>3L, 4L & words</small></div>
+            <div><span class="platform-icon tt">TT</span><strong>TikTok</strong><small>3L, 4L & words</small></div>
+            <div><span class="platform-icon tw">X</span><strong>X / Twitter</strong><small>3L & 4L</small></div>
+            <div><span class="platform-icon sc">SC</span><strong>Snapchat</strong><small>4L inventory</small></div>
+          </div>
+          <div class="side-note">Inventory can change quickly. Starting checkout temporarily reserves a listing while payment is reviewed.</div>
         </div>
-
-        <div id="inventoryGrid" class="inventory-grid"><div class="loading-state">Loading live inventory…</div></div>
-        <div class="load-more-wrap"><button id="loadMore" class="load-more" hidden>Load more handles</button></div>
       </div>
     </section>
 
-    <section id="process" class="wrap process-section">
-      <div class="section-title"><div><span class="mini-label">SIMPLE PROCESS</span><h2>From search to delivery.</h2></div><p>No automatic “paid” status from a form. Every payment is independently checked before fulfillment.</p></div>
-      <div class="process-grid">
-        <article><span>01</span><div class="process-icon">⌕</div><h3>Find your @</h3><p>Search by platform, length, price, or exact username.</p></article>
-        <article><span>02</span><div class="process-icon">$</div><h3>Send payment</h3><p>Choose Cash App, Zelle, PayPal, or the listed crypto network.</p></article>
-        <article><span>03</span><div class="process-icon">✓</div><h3>Payment check</h3><p>Your reference is reviewed and the payment is independently verified.</p></article>
-        <article><span>04</span><div class="process-icon">→</div><h3>Get delivery</h3><p>Approved transfer information is sent to your checkout email.</p></article>
+    <section class="wrap featured-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">FEATURED</span>
+          <h2>Standout handles</h2>
+        </div>
+        <a href="#market">View all handles →</a>
+      </div>
+      <div id="featuredGrid" class="featured-grid">
+        <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
       </div>
     </section>
 
-    <section class="wrap trust-section">
-      <div class="trust-card"><span class="mini-label">WHY MIKYE MEDIA</span><h2>A cleaner way to shop short handles.</h2><p>Supplier identity, acquisition cost and internal profit stay private. Customers see only the listing, platform, type, public price and order status.</p></div>
-      <div class="trust-points"><div><b>01</b><span>Live inventory</span><p>Reserved and sold listings leave the available marketplace.</p></div><div><b>02</b><span>Order tracking</span><p>Every checkout receives a unique order ID.</p></div><div><b>03</b><span>Manual fulfillment</span><p>No handle is fulfilled until payment has actually been checked.</p></div></div>
+    <section id="market" class="wrap marketplace-section">
+      <div class="market-head">
+        <div>
+          <span class="eyebrow">MARKETPLACE</span>
+          <h2>All handles</h2>
+        </div>
+        <div class="result-copy"><strong id="resultCount">—</strong> results</div>
+      </div>
+
+      <div class="market-layout">
+        <aside class="filter-sidebar">
+          <div class="filter-title">Filters</div>
+
+          <div class="filter-block">
+            <span class="filter-name">Platform</span>
+            <div class="chips vertical" id="platformFilters">
+              <button class="active" data-platform="all">All platforms</button>
+              <button data-platform="Instagram">Instagram</button>
+              <button data-platform="TikTok">TikTok</button>
+              <button data-platform="Twitter">X / Twitter</button>
+              <button data-platform="Snapchat">Snapchat</button>
+            </div>
+          </div>
+
+          <div class="filter-block">
+            <span class="filter-name">Type</span>
+            <div class="chips vertical" id="kindFilters">
+              <button class="active" data-kind="all">All types</button>
+              <button data-kind="2L">2L</button>
+              <button data-kind="3L">3L</button>
+              <button data-kind="4L">4L</button>
+              <button data-kind="Word">Words</button>
+            </div>
+          </div>
+
+          <div class="sidebar-note">Payments are manually verified before fulfillment.</div>
+        </aside>
+
+        <div class="market-main">
+          <div class="market-toolbar">
+            <div class="search-field">
+              <span>@</span>
+              <input id="marketSearch" type="search" placeholder="Search handles" autocomplete="off" spellcheck="false">
+              <button id="clearSearch" aria-label="Clear search">×</button>
+            </div>
+            <select id="sortSelect" aria-label="Sort inventory">
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="handle">Handle: A–Z</option>
+            </select>
+          </div>
+
+          <div id="inventoryGrid" class="inventory-grid">
+            <div class="loading-state">Loading live inventory…</div>
+          </div>
+          <div class="load-more-wrap"><button id="loadMore" class="load-more" hidden>Load more handles</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process-section">
+      <div class="wrap">
+        <div class="section-heading split">
+          <div><span class="eyebrow">HOW IT WORKS</span><h2>Simple checkout.<br>Manual verification.</h2></div>
+          <p>Submitting a reference does not automatically mark an order as paid. Payment is checked before a handle is fulfilled.</p>
+        </div>
+        <div class="process-grid">
+          <article><span>01</span><h3>Pick a handle</h3><p>Search the live marketplace and choose the username you want.</p></article>
+          <article><span>02</span><h3>Send payment</h3><p>Use Cash App, Zelle, PayPal, or the listed crypto network.</p></article>
+          <article><span>03</span><h3>We verify it</h3><p>Your payment is checked manually before the order moves forward.</p></article>
+          <article><span>04</span><h3>Receive delivery</h3><p>Transfer details are sent to the email you used at checkout.</p></article>
+        </div>
+      </div>
     </section>
 
     <section id="faq" class="wrap faq-section">
-      <div class="faq-heading"><span class="mini-label">FAQ</span><h2>Before you buy.</h2></div>
+      <div class="faq-heading"><span class="eyebrow">FAQ</span><h2>Questions before buying?</h2></div>
       <div class="faq-list">
-        <details open><summary>Does submitting an order mean my payment is approved?<i>+</i></summary><p>No. Your payment reference helps locate the transaction, but payment is manually verified before fulfillment.</p></details>
-        <details><summary>How fast is delivery?<i>+</i></summary><p>Delivery is manual and depends on payment verification and securing the selected handle. Transfer details are emailed when ready.</p></details>
-        <details><summary>Why did a handle disappear?<i>+</i></summary><p>It may be reserved by another checkout, sold, or removed because availability changed.</p></details>
-        <details><summary>Which email should I use?<i>+</i></summary><p>Use an email you actively control. Fulfillment details and important order updates are sent there.</p></details>
+        <details open><summary>Does submitting checkout mean my payment is approved?<span>+</span></summary><p>No. Your payment reference helps locate the transaction, but payment is manually verified before fulfillment.</p></details>
+        <details><summary>How fast is delivery?<span>+</span></summary><p>Delivery is manual and depends on payment verification and securing the selected handle. Transfer details are emailed when ready.</p></details>
+        <details><summary>Why did a handle disappear?<span>+</span></summary><p>It may be reserved by another checkout, sold, or removed because availability changed.</p></details>
+        <details><summary>Which email should I use?<span>+</span></summary><p>Use an email you actively control. Fulfillment details and important order updates are sent there.</p></details>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="wrap footer-inner"><div><a class="logo" href="#top"><span>MIKYE</span><b>MEDIA</b></a><p>Premium social handles.</p></div><p class="legal">Independent marketplace. Not affiliated with Instagram, Meta, TikTok, X, Snapchat, Cash App, Zelle, PayPal, Telegram, or any cryptocurrency network.</p><span>© 2026 Mikye Media</span></div></footer>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><a class="logo" href="#top"><span class="logo-mark">M</span><span>Mikye Media</span></a><p>Premium social username marketplace.</p></div>
+      <p class="legal">Independent marketplace. Not affiliated with Instagram, Meta, TikTok, X, Snapchat, Cash App, Zelle, PayPal, Telegram, or any cryptocurrency network.</p>
+      <span>© 2026 Mikye Media</span>
+    </div>
+  </footer>
 
   <dialog id="checkoutModal" class="modal">
     <form method="dialog" class="modal-card checkout-card" id="checkoutForm">
       <button class="close" value="cancel" aria-label="Close">×</button>
-      <div class="modal-label">CHECKOUT</div>
-      <div class="checkout-head"><div><h2 id="checkoutHandle">@handle</h2><p id="checkoutMeta">Platform · Type</p></div><strong id="checkoutPrice">$0</strong></div>
-      <div class="divider"></div>
+      <span class="modal-label">Checkout</span>
+      <div class="checkout-head">
+        <div><h2 id="checkoutHandle">@handle</h2><p id="checkoutMeta">Platform · Type</p></div>
+        <strong id="checkoutPrice">$0</strong>
+      </div>
       <p class="modal-muted">Choose a payment method, send the exact amount, then submit the transaction details for manual verification.</p>
       <div id="paymentMethods" class="payment-methods"></div>
       <div id="paymentInstructions" class="payment-box">Choose a payment method.</div>
       <div class="form-grid">
         <label class="full-span">Email<input required id="buyerEmail" type="email" placeholder="you@example.com"></label>
         <label>Sender / payer<input required id="payerName" type="text" maxlength="100" placeholder="Name or payment handle"></label>
-        <label>Transaction/reference ID<input required id="paymentRef" type="text" maxlength="160" placeholder="Confirmation or tx hash"></label>
+        <label>Transaction / reference ID<input required id="paymentRef" type="text" maxlength="160" placeholder="Confirmation or tx hash"></label>
         <label class="full-span">Optional note<textarea id="buyerNote" maxlength="500" placeholder="Anything we should know?"></textarea></label>
       </div>
       <label class="confirm-row"><input id="paymentConfirm" type="checkbox" required><span>I already sent the exact amount and understand the payment will be manually verified.</span></label>
@@ -127,9 +188,13 @@
 
   <dialog id="trackModal" class="modal">
     <form method="dialog" class="modal-card track-card">
-      <button class="close" value="cancel">×</button><div class="modal-label">ORDER LOOKUP</div><h2>Track your order</h2><p class="modal-muted">Enter the order ID shown after checkout.</p>
+      <button class="close" value="cancel">×</button>
+      <span class="modal-label">Order lookup</span>
+      <h2>Track your order</h2>
+      <p class="modal-muted">Enter the order ID shown after checkout.</p>
       <label>Order ID<input id="trackOrderId" placeholder="Example: 8F12A7BC90"></label>
-      <button type="button" class="primary-btn full" id="trackBtn">Check status</button><div id="trackResult" class="status"></div>
+      <button type="button" class="primary-btn full" id="trackBtn">Check status</button>
+      <div id="trackResult" class="status"></div>
     </form>
   </dialog>
 
