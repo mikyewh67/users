@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Premium Instagram and TikTok handles with manual payment verification and secure fulfillment." />
+  <title>HandleVault — Premium Social Handles</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="nav wrap">
+    <a class="brand" href="#">HANDLE<span>VAULT</span></a>
+    <nav>
+      <a href="#inventory">Inventory</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="ghost small" id="openOrders">Track order</button>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow">CURATED • SHORT • PREMIUM</div>
+      <h1>Find the handle<br><em>you actually want.</em></h1>
+      <p>Short Instagram and TikTok usernames, organized by platform and length. Checkout securely, submit your payment reference, and receive transfer details by email after verification.</p>
+      <div class="hero-actions"><a class="button" href="#inventory">Browse inventory</a><a class="ghost" href="#how">How it works</a></div>
+      <div class="trust-row"><span>Manual payment verification</span><span>Telegram order alerts</span><span>Email fulfillment</span></div>
+    </section>
+
+    <section class="wrap stats">
+      <div><strong id="statTotal">80</strong><span>listed handles</span></div>
+      <div><strong>4</strong><span>payment options</span></div>
+      <div><strong>2</strong><span>platforms</span></div>
+      <div><strong>1:1</strong><span>manual verification</span></div>
+    </section>
+
+    <section id="inventory" class="wrap inventory-section">
+      <div class="section-head"><div><div class="eyebrow">LIVE INVENTORY</div><h2>Choose your handle</h2></div><p>Availability can change quickly. A submitted order temporarily reserves a handle while payment is checked.</p></div>
+      <div class="toolbar">
+        <div class="segmented" id="platformFilters">
+          <button class="active" data-platform="all">All</button><button data-platform="Instagram">Instagram</button><button data-platform="TikTok">TikTok</button>
+        </div>
+        <div class="segmented" id="kindFilters">
+          <button class="active" data-kind="all">All lengths</button><button data-kind="3L">3L</button><button data-kind="4L">4L</button>
+        </div>
+        <select id="sortSelect" aria-label="Sort"><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="handle">Handle A–Z</option></select>
+      </div>
+      <div id="inventoryGrid" class="grid"><div class="loading">Loading inventory…</div></div>
+    </section>
+
+    <section id="how" class="wrap how">
+      <div class="eyebrow">SIMPLE PROCESS</div><h2>How it works</h2>
+      <div class="steps">
+        <article><b>01</b><h3>Pick a handle</h3><p>Choose an available Instagram or TikTok handle and start checkout.</p></article>
+        <article><b>02</b><h3>Send payment</h3><p>Use Cash App, Zelle, PayPal, or the listed crypto wallet. Then submit your sender/reference details.</p></article>
+        <article><b>03</b><h3>Payment is verified</h3><p>Your order triggers a private Telegram alert. Payment is checked manually before fulfillment.</p></article>
+        <article><b>04</b><h3>Receive transfer details</h3><p>After approval, transfer instructions are sent to the email used at checkout.</p></article>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap faq">
+      <div><div class="eyebrow">FAQ</div><h2>Before you buy</h2></div>
+      <div class="faq-list">
+        <details open><summary>Is submitting the payment form proof that I paid?</summary><p>No. Every payment is manually verified. A transaction reference helps locate the payment but does not guarantee approval.</p></details>
+        <details><summary>How fast is delivery?</summary><p>Delivery is manual and depends on payment verification and the underlying handle transfer. No instant-delivery promise is made.</p></details>
+        <details><summary>What email should I use?</summary><p>Use an email you can access. Approved transfer details and order updates are sent there.</p></details>
+        <details><summary>Can availability change?</summary><p>Yes. Short handles are limited inventory. If a handle becomes unavailable before verified fulfillment, the order must be resolved manually.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer"><div class="brand">HANDLE<span>VAULT</span></div><p>Independent marketplace. Not affiliated with Instagram, Meta, TikTok, Cash App, Zelle, PayPal, Telegram, or any cryptocurrency network.</p></footer>
+
+  <dialog id="checkoutModal" class="modal">
+    <form method="dialog" class="modal-card" id="checkoutForm">
+      <button class="close" value="cancel" aria-label="Close">×</button>
+      <div class="eyebrow">CHECKOUT</div>
+      <h2 id="checkoutHandle">@handle</h2>
+      <div class="checkout-price" id="checkoutPrice">$0</div>
+      <p class="muted">Send the exact amount using one of the available methods, then submit your payment details below.</p>
+      <div id="paymentMethods" class="payment-methods"></div>
+      <div id="paymentInstructions" class="payment-box">Choose a payment method.</div>
+      <label>Email<input required id="buyerEmail" type="email" placeholder="you@example.com" /></label>
+      <label>Sender name / payment handle<input required id="payerName" type="text" maxlength="100" placeholder="Name, $cashtag, PayPal email, etc." /></label>
+      <label>Transaction/reference ID<input required id="paymentRef" type="text" maxlength="160" placeholder="Payment note, confirmation, tx hash, etc." /></label>
+      <label>Optional note<textarea id="buyerNote" maxlength="500" placeholder="Anything we should know?"></textarea></label>
+      <label class="check"><input id="paymentConfirm" type="checkbox" required /> <span>I have already sent the exact payment amount and understand it will be manually verified.</span></label>
+      <button type="submit" class="button full" id="submitOrder">I sent payment — submit order</button>
+      <div id="checkoutStatus" class="status"></div>
+    </form>
+  </dialog>
+
+  <dialog id="trackModal" class="modal">
+    <form method="dialog" class="modal-card slim">
+      <button class="close" value="cancel">×</button><div class="eyebrow">ORDER LOOKUP</div><h2>Track an order</h2>
+      <p class="muted">Your order ID is shown after checkout and included in order emails.</p>
+      <label>Order ID<input id="trackOrderId" placeholder="Example: 8F12A7BC90" /></label>
+      <button type="button" class="button full" id="trackBtn">Check status</button>
+      <div id="trackResult" class="status"></div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
