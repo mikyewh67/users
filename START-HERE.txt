@@ -1,23 +1,30 @@
-HANDLEVAULT — START HERE
+MIKYE MEDIA — START HERE
 
-BEST HOSTING SETUP:
+LIVE STACK:
 GitHub repository -> Vercel deployment -> Supabase database
 
-1. Create a free Supabase project.
-2. In Supabase SQL Editor, run: supabase-setup.sql
-3. Create your Telegram bot and get TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID.
-4. Create Resend and verify the email/domain you will send order fulfillment from.
-5. Import this GitHub repository into Vercel.
-6. Add all variables shown in .env.example to Vercel -> Settings -> Environment Variables.
-7. Redeploy.
-8. Storefront: https://YOURDOMAIN/
-9. Private fulfillment page: https://YOURDOMAIN/admin.html
+PUBLIC REPO FILES:
+- supabase-setup.sql is schema-only.
+- Never commit supplier names, acquisition costs, profit reports, or the private inventory migration.
 
-IMPORTANT:
-- Cash App / Zelle / PayPal / crypto checkout is MANUALLY VERIFIED in this version.
-- A buyer submitting the form does NOT prove payment.
-- Telegram tells you the supplier and your cost so you know where to source the handle.
-- Only press Fulfill after checking payment and obtaining the item.
-- Fulfill sends the transfer instructions to the buyer's checkout email and marks inventory sold.
+INVENTORY UPDATE:
+1. Open Supabase -> SQL Editor.
+2. Run the private inventory migration supplied separately by ChatGPT.
+3. Confirm inventory now includes Instagram, TikTok, Twitter, and Snapchat.
+4. Vercel will serve the updated inventory through /api/inventory.
 
-See README.md for full details.
+FULFILLMENT:
+- Cash App / Zelle / PayPal / crypto are MANUALLY VERIFIED.
+- A buyer submitting a reference does NOT prove payment.
+- Telegram shows the private supplier and cost.
+- Only press Fulfill after independently checking payment and securing the handle.
+- Fulfill emails transfer instructions and marks the listing sold.
+
+STORE:
+https://mikyemedia.com/
+
+PRIVATE ADMIN:
+https://mikyemedia.com/admin.html
+
+SECURITY:
+Prefer making this GitHub repository Private. Vercel can deploy private repositories.
