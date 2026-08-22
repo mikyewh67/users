@@ -1,0 +1,23 @@
+HANDLEVAULT — START HERE
+
+BEST HOSTING SETUP:
+GitHub repository -> Vercel deployment -> Supabase database
+
+1. Create a free Supabase project.
+2. In Supabase SQL Editor, run: supabase-setup.sql
+3. Create your Telegram bot and get TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID.
+4. Create Resend and verify the email/domain you will send order fulfillment from.
+5. Import this GitHub repository into Vercel.
+6. Add all variables shown in .env.example to Vercel -> Settings -> Environment Variables.
+7. Redeploy.
+8. Storefront: https://YOURDOMAIN/
+9. Private fulfillment page: https://YOURDOMAIN/admin.html
+
+IMPORTANT:
+- Cash App / Zelle / PayPal / crypto checkout is MANUALLY VERIFIED in this version.
+- A buyer submitting the form does NOT prove payment.
+- Telegram tells you the supplier and your cost so you know where to source the handle.
+- Only press Fulfill after checking payment and obtaining the item.
+- Fulfill sends the transfer instructions to the buyer's checkout email and marks inventory sold.
+
+See README.md for full details.
