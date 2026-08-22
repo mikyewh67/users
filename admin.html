@@ -1,6 +1,37 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HandleVault Admin</title><link rel="stylesheet" href="/styles.css"></head><body><main class="wrap" style="padding:60px 0;max-width:760px"><div class="eyebrow">PRIVATE ADMIN</div><h1 style="font-size:52px;margin:0 0 30px">Order fulfillment</h1><section class="modal-card" style="margin:0;width:100%"><label>Admin secret<input id="secret" type="password"></label><label>Order ID<input id="oid" placeholder="Order ID"></label><button id="load" class="button full">Load order</button><div id="result" class="status"></div><div id="actions" style="display:none"><hr style="border:0;border-top:1px solid #333;margin:25px 0"><label>Transfer details / instructions<textarea id="details" style="min-height:180px" placeholder="Transfer instructions, one-time details, recovery handoff, etc."></textarea></label><button id="fulfill" class="button full">Verify paid + fulfill by email</button><button id="release" class="ghost full" style="margin-top:8px">Release / cancel order</button><p class="muted">Only click fulfill after you have independently verified the payment and secured the handle for the buyer.</p></div></section></main><script>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mikye Media — Admin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .admin-shell{max-width:760px;padding:48px 0 80px}.admin-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}.admin-back{font-size:12px;color:#555;text-decoration:none}.admin-back:hover{color:#111}.admin-title{font-size:42px;letter-spacing:-.05em;margin:7px 0 8px}.admin-sub{color:#74746f;font-size:13px;line-height:1.5;margin:0}.admin-card{background:#fff;border:1px solid #deded8;border-radius:14px;padding:22px;margin-top:24px}.admin-card label{display:grid;gap:7px;margin-bottom:14px;color:#555;font-size:11px;font-weight:700}.admin-card input,.admin-card textarea{width:100%;border:1px solid #deded8;background:#fff;color:#111;border-radius:9px;padding:12px;font:inherit;outline:none}.admin-card input:focus,.admin-card textarea:focus{border-color:#8aa4ff;box-shadow:0 0 0 3px rgba(36,87,255,.08)}.admin-card textarea{min-height:180px;resize:vertical}.admin-btn{width:100%;border:0;border-radius:8px;background:#2457ff;color:#fff;padding:12px 16px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.admin-btn:hover{background:#1640cf}.admin-btn.secondary{margin-top:8px;background:#fff;color:#111;border:1px solid #cfcfc9}.admin-btn.secondary:hover{border-color:#aaa;background:#fafaf8}.admin-divider{border:0;border-top:1px solid #e3e3de;margin:24px 0}.admin-note{color:#777772;font-size:11px;line-height:1.55}.admin-result{margin-top:16px;padding:14px;border-radius:9px;background:#f7f7f4;font-size:12px;line-height:1.7}.admin-result:empty{display:none}.admin-result.ok{color:#166534;background:#f0fdf4}.admin-result.err{color:#b42318;background:#fff4f2}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="wrap nav"><a class="logo" href="/"><span class="logo-mark">M</span><span>Mikye Media</span></a><a class="admin-back" href="/">← Back to store</a></div></header>
+  <main class="wrap admin-shell">
+    <div class="admin-top"><div><span class="eyebrow">PRIVATE ADMIN</span><h1 class="admin-title">Order fulfillment</h1><p class="admin-sub">Load an order, verify payment yourself, then fulfill or release it.</p></div></div>
+    <section class="admin-card">
+      <label>Admin secret<input id="secret" type="password" autocomplete="current-password"></label>
+      <label>Order ID<input id="oid" placeholder="Order ID"></label>
+      <button id="load" class="admin-btn">Load order</button>
+      <div id="result" class="admin-result"></div>
+      <div id="actions" style="display:none">
+        <hr class="admin-divider">
+        <label>Transfer details / instructions<textarea id="details" placeholder="Transfer instructions, one-time details, recovery handoff, etc."></textarea></label>
+        <button id="fulfill" class="admin-btn">Verify paid + fulfill by email</button>
+        <button id="release" class="admin-btn secondary">Release / cancel order</button>
+        <p class="admin-note">Only fulfill after you independently verify the payment and secure the handle for the buyer.</p>
+      </div>
+    </section>
+  </main>
+<script>
 const $=s=>document.querySelector(s);let current=null;const post=(u,b)=>fetch(u,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(async r=>{const j=await r.json();if(!r.ok)throw new Error(j.error||'Request failed');return j});function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-$('#load').onclick=async()=>{try{const j=await post('/api/admin-order',{adminSecret:$('#secret').value,orderId:$('#oid').value});current=j.order;const o=current,i=o.inventory;$('#result').className='status ok';$('#result').innerHTML=`<b>${esc(i.handle)}</b> — $${i.sale_price}<br>Status: ${esc(o.status)}<br>Supplier: ${esc(i.source)} / cost $${i.cost}<br>Buyer: ${esc(o.buyer_email)}<br>Payment: ${esc(o.payment_method)} / ${esc(o.payer_name)}<br>Reference: ${esc(o.payment_ref)}<br>Gross spread: $${Number(i.sale_price)-Number(i.cost)}`;$('#actions').style.display=o.status==='pending'?'block':'none'}catch(e){$('#result').className='status err';$('#result').textContent=e.message;$('#actions').style.display='none'}};
-$('#fulfill').onclick=async()=>{if(!current)return;try{await post('/api/fulfill',{adminSecret:$('#secret').value,orderId:current.public_id,transferDetails:$('#details').value});$('#result').className='status ok';$('#result').textContent='Fulfilled and emailed successfully.';$('#actions').style.display='none'}catch(e){$('#result').className='status err';$('#result').textContent=e.message}};
-$('#release').onclick=async()=>{if(!current||!confirm('Release this order and put the handle back for sale?'))return;try{await post('/api/release',{adminSecret:$('#secret').value,orderId:current.public_id});$('#result').className='status ok';$('#result').textContent='Order released.';$('#actions').style.display='none'}catch(e){$('#result').className='status err';$('#result').textContent=e.message}};
-</script></body></html>
+$('#load').onclick=async()=>{try{const j=await post('/api/admin-order',{adminSecret:$('#secret').value,orderId:$('#oid').value});current=j.order;const o=current,i=o.inventory;$('#result').className='admin-result ok';$('#result').innerHTML=`<b>${esc(i.handle)}</b> — $${i.sale_price}<br>Status: ${esc(o.status)}<br>Supplier: ${esc(i.source)} / cost $${i.cost}<br>Buyer: ${esc(o.buyer_email)}<br>Payment: ${esc(o.payment_method)} / ${esc(o.payer_name)}<br>Reference: ${esc(o.payment_ref)}<br>Gross spread: $${Number(i.sale_price)-Number(i.cost)}`;$('#actions').style.display=o.status==='pending'?'block':'none'}catch(e){$('#result').className='admin-result err';$('#result').textContent=e.message;$('#actions').style.display='none'}};
+$('#fulfill').onclick=async()=>{if(!current)return;try{await post('/api/fulfill',{adminSecret:$('#secret').value,orderId:current.public_id,transferDetails:$('#details').value});$('#result').className='admin-result ok';$('#result').textContent='Fulfilled and emailed successfully.';$('#actions').style.display='none'}catch(e){$('#result').className='admin-result err';$('#result').textContent=e.message}};
+$('#release').onclick=async()=>{if(!current||!confirm('Release this order and put the handle back for sale?'))return;try{await post('/api/release',{adminSecret:$('#secret').value,orderId:current.public_id});$('#result').className='admin-result ok';$('#result').textContent='Order released.';$('#actions').style.display='none'}catch(e){$('#result').className='admin-result err';$('#result').textContent=e.message}};
+</script>
+</body>
+</html>
