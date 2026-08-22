@@ -3,79 +3,132 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Premium Instagram and TikTok handles with manual payment verification and secure fulfillment." />
-  <title>HandleVault — Premium Social Handles</title>
+  <meta name="description" content="Premium short Instagram and TikTok handles from Mikye Media." />
+  <meta name="theme-color" content="#07070a" />
+  <title>Mikye Media — Premium Social Handles</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
   <div class="noise"></div>
+
+  <div class="announcement">Premium Instagram & TikTok handles • Secure manual verification • Email fulfillment</div>
+
   <header class="nav wrap">
-    <a class="brand" href="#">HANDLE<span>VAULT</span></a>
+    <a class="brand" href="#top"><span class="brand-mark">M</span><span class="brand-copy">MIKYE <b>MEDIA</b></span></a>
     <nav>
-      <a href="#inventory">Inventory</a>
-      <a href="#how">How it works</a>
+      <a href="#inventory">Marketplace</a>
+      <a href="#how">Process</a>
       <a href="#faq">FAQ</a>
     </nav>
     <button class="ghost small" id="openOrders">Track order</button>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero wrap">
-      <div class="eyebrow">CURATED • SHORT • PREMIUM</div>
-      <h1>Find the handle<br><em>you actually want.</em></h1>
-      <p>Short Instagram and TikTok usernames, organized by platform and length. Checkout securely, submit your payment reference, and receive transfer details by email after verification.</p>
-      <div class="hero-actions"><a class="button" href="#inventory">Browse inventory</a><a class="ghost" href="#how">How it works</a></div>
-      <div class="trust-row"><span>Manual payment verification</span><span>Telegram order alerts</span><span>Email fulfillment</span></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> CURATED SOCIAL ASSETS</div>
+        <h1>Own a handle<br><span>worth remembering.</span></h1>
+        <p>Shop a curated selection of short Instagram and TikTok usernames. Clear pricing, simple checkout, manual payment verification, and direct fulfillment to your email.</p>
+        <div class="hero-actions">
+          <a class="button" href="#inventory">Explore handles <span>↗</span></a>
+          <button class="ghost" id="heroTrack" onclick="document.getElementById('openOrders').click()">Track an order</button>
+        </div>
+        <div class="trust-row">
+          <span>Manual verification</span><span>Private checkout</span><span>Email delivery</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-top"><span>MARKETPLACE</span><span class="online">● ONLINE</span></div>
+        <div class="sample-handle">@yourname</div>
+        <div class="sample-meta"><span>Premium social identity</span><strong>3L / 4L</strong></div>
+        <div class="mini-grid">
+          <div><small>Inventory</small><strong id="statTotal">80</strong></div>
+          <div><small>Platforms</small><strong>02</strong></div>
+          <div><small>Payments</small><strong>04</strong></div>
+        </div>
+      </div>
     </section>
 
-    <section class="wrap stats">
-      <div><strong id="statTotal">80</strong><span>listed handles</span></div>
-      <div><strong>4</strong><span>payment options</span></div>
-      <div><strong>2</strong><span>platforms</span></div>
-      <div><strong>1:1</strong><span>manual verification</span></div>
+    <section class="marquee-wrap">
+      <div class="marquee">INSTAGRAM <i>•</i> TIKTOK <i>•</i> 3-LETTER <i>•</i> 4-LETTER <i>•</i> CURATED <i>•</i> VERIFIED PROCESS <i>•</i> INSTAGRAM <i>•</i> TIKTOK</div>
     </section>
 
     <section id="inventory" class="wrap inventory-section">
-      <div class="section-head"><div><div class="eyebrow">LIVE INVENTORY</div><h2>Choose your handle</h2></div><p>Availability can change quickly. A submitted order temporarily reserves a handle while payment is checked.</p></div>
-      <div class="toolbar">
-        <div class="segmented" id="platformFilters">
-          <button class="active" data-platform="all">All</button><button data-platform="Instagram">Instagram</button><button data-platform="TikTok">TikTok</button>
-        </div>
-        <div class="segmented" id="kindFilters">
-          <button class="active" data-kind="all">All lengths</button><button data-kind="3L">3L</button><button data-kind="4L">4L</button>
-        </div>
-        <select id="sortSelect" aria-label="Sort"><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="handle">Handle A–Z</option></select>
+      <div class="section-head">
+        <div><div class="eyebrow">LIVE MARKETPLACE</div><h2>Available handles</h2></div>
+        <p>Inventory is limited and can change quickly. Starting checkout temporarily reserves a handle while payment is reviewed.</p>
       </div>
-      <div id="inventoryGrid" class="grid"><div class="loading">Loading inventory…</div></div>
+
+      <div class="market-shell">
+        <div class="toolbar">
+          <div class="filter-group">
+            <span class="filter-label">Platform</span>
+            <div class="segmented" id="platformFilters">
+              <button class="active" data-platform="all">All</button>
+              <button data-platform="Instagram">Instagram</button>
+              <button data-platform="TikTok">TikTok</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Length</span>
+            <div class="segmented" id="kindFilters">
+              <button class="active" data-kind="all">All</button>
+              <button data-kind="3L">3L</button>
+              <button data-kind="4L">4L</button>
+            </div>
+          </div>
+          <div class="filter-group sort-group">
+            <span class="filter-label">Sort</span>
+            <select id="sortSelect" aria-label="Sort">
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="handle">Handle A–Z</option>
+            </select>
+          </div>
+        </div>
+        <div id="inventoryGrid" class="grid"><div class="loading">Loading inventory…</div></div>
+      </div>
     </section>
 
     <section id="how" class="wrap how">
-      <div class="eyebrow">SIMPLE PROCESS</div><h2>How it works</h2>
+      <div class="section-head compact">
+        <div><div class="eyebrow">HOW IT WORKS</div><h2>Simple from start to finish.</h2></div>
+      </div>
       <div class="steps">
-        <article><b>01</b><h3>Pick a handle</h3><p>Choose an available Instagram or TikTok handle and start checkout.</p></article>
-        <article><b>02</b><h3>Send payment</h3><p>Use Cash App, Zelle, PayPal, or the listed crypto wallet. Then submit your sender/reference details.</p></article>
-        <article><b>03</b><h3>Payment is verified</h3><p>Your order triggers a private Telegram alert. Payment is checked manually before fulfillment.</p></article>
-        <article><b>04</b><h3>Receive transfer details</h3><p>After approval, transfer instructions are sent to the email used at checkout.</p></article>
+        <article><div class="step-no">01</div><div class="step-icon">⌕</div><h3>Choose your handle</h3><p>Browse the live marketplace and pick the Instagram or TikTok handle you want.</p></article>
+        <article><div class="step-no">02</div><div class="step-icon">$</div><h3>Send payment</h3><p>Choose Cash App, Zelle, PayPal, or crypto and submit your payment reference.</p></article>
+        <article><div class="step-no">03</div><div class="step-icon">✓</div><h3>We verify it</h3><p>Your payment is checked manually before the handle is secured and prepared for delivery.</p></article>
+        <article><div class="step-no">04</div><div class="step-icon">→</div><h3>Receive delivery</h3><p>Once approved, transfer information is sent to the email used during checkout.</p></article>
       </div>
     </section>
 
+    <section class="wrap assurance">
+      <div class="assurance-copy"><div class="eyebrow">PURCHASE WITH CLARITY</div><h2>Built around a manual verification process.</h2><p>Orders are not automatically marked paid based on a form submission. Payment is independently checked before fulfillment.</p></div>
+      <div class="assurance-list"><div><span>01</span><p>No hidden supplier information shown publicly</p></div><div><span>02</span><p>Order ID provided after checkout</p></div><div><span>03</span><p>Private fulfillment workflow</p></div></div>
+    </section>
+
     <section id="faq" class="wrap faq">
-      <div><div class="eyebrow">FAQ</div><h2>Before you buy</h2></div>
+      <div><div class="eyebrow">FAQ</div><h2>Before you buy.</h2><p class="muted">Quick answers about checkout, payment verification, and delivery.</p></div>
       <div class="faq-list">
-        <details open><summary>Is submitting the payment form proof that I paid?</summary><p>No. Every payment is manually verified. A transaction reference helps locate the payment but does not guarantee approval.</p></details>
-        <details><summary>How fast is delivery?</summary><p>Delivery is manual and depends on payment verification and the underlying handle transfer. No instant-delivery promise is made.</p></details>
-        <details><summary>What email should I use?</summary><p>Use an email you can access. Approved transfer details and order updates are sent there.</p></details>
-        <details><summary>Can availability change?</summary><p>Yes. Short handles are limited inventory. If a handle becomes unavailable before verified fulfillment, the order must be resolved manually.</p></details>
+        <details open><summary>Does submitting checkout mean my payment is approved?<span>+</span></summary><p>No. Every payment is manually verified. The transaction reference helps locate your payment but does not guarantee approval.</p></details>
+        <details><summary>How quickly will I receive the handle?<span>+</span></summary><p>Fulfillment is manual and depends on payment verification and the underlying transfer. You will receive the transfer information by email once the order is ready.</p></details>
+        <details><summary>Which email should I use?<span>+</span></summary><p>Use an email you actively have access to. Approved transfer information and order updates are sent there.</p></details>
+        <details><summary>Can a handle become unavailable?<span>+</span></summary><p>Yes. Short usernames are limited inventory. If availability changes before verified fulfillment, the order is handled manually.</p></details>
       </div>
     </section>
   </main>
 
-  <footer class="wrap footer"><div class="brand">HANDLE<span>VAULT</span></div><p>Independent marketplace. Not affiliated with Instagram, Meta, TikTok, Cash App, Zelle, PayPal, Telegram, or any cryptocurrency network.</p></footer>
+  <footer class="wrap footer">
+    <div><a class="brand footer-brand" href="#top"><span class="brand-mark">M</span><span class="brand-copy">MIKYE <b>MEDIA</b></span></a><p>Premium social handles.</p></div>
+    <div class="footer-right"><p>Independent marketplace. Not affiliated with Instagram, Meta, TikTok, Cash App, Zelle, PayPal, Telegram, or any cryptocurrency network.</p><span>© 2026 Mikye Media</span></div>
+  </footer>
 
   <dialog id="checkoutModal" class="modal">
     <form method="dialog" class="modal-card" id="checkoutForm">
       <button class="close" value="cancel" aria-label="Close">×</button>
-      <div class="eyebrow">CHECKOUT</div>
+      <div class="eyebrow">SECURE CHECKOUT</div>
       <h2 id="checkoutHandle">@handle</h2>
       <div class="checkout-price" id="checkoutPrice">$0</div>
       <p class="muted">Send the exact amount using one of the available methods, then submit your payment details below.</p>
@@ -93,8 +146,10 @@
 
   <dialog id="trackModal" class="modal">
     <form method="dialog" class="modal-card slim">
-      <button class="close" value="cancel">×</button><div class="eyebrow">ORDER LOOKUP</div><h2>Track an order</h2>
-      <p class="muted">Your order ID is shown after checkout and included in order emails.</p>
+      <button class="close" value="cancel">×</button>
+      <div class="eyebrow">ORDER LOOKUP</div>
+      <h2>Track an order</h2>
+      <p class="muted">Enter the order ID shown after checkout.</p>
       <label>Order ID<input id="trackOrderId" placeholder="Example: 8F12A7BC90" /></label>
       <button type="button" class="button full" id="trackBtn">Check status</button>
       <div id="trackResult" class="status"></div>
