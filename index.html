@@ -7,8 +7,12 @@
   <meta name="theme-color" content="#f6f6f3">
   <title>Mikye Media — Username Marketplace</title>
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    .sale-bar{background:#2457ff;color:#fff;text-align:center;padding:10px 16px;font-size:12px;font-weight:800;letter-spacing:.01em}.sale-bar b{font-weight:900}.sale-code{display:inline-block;margin:0 5px;padding:3px 7px;border:1px solid rgba(255,255,255,.45);border-radius:6px;background:rgba(255,255,255,.12);letter-spacing:.08em}.checkout-price-stack{text-align:right}.checkout-price-stack .old-price{display:none;color:#8b8b86;text-decoration:line-through;font-size:12px;margin-bottom:3px}.checkout-price-stack .old-price.show{display:block}.promo-box{margin:14px 0;padding:13px;border:1px solid #d8ddea;background:#f7f9ff;border-radius:9px}.promo-label{display:block;font-size:10px;font-weight:800;color:#555;margin-bottom:7px}.promo-row{display:flex;gap:7px}.promo-row input{flex:1;text-transform:uppercase}.promo-row button{border:0;border-radius:8px;background:#111;color:#fff;padding:0 15px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}.promo-row button:hover{background:#2457ff}.promo-row button:disabled{opacity:.55;cursor:not-allowed}.promo-status{font-size:10px;line-height:1.5;margin-top:8px;color:#666}.promo-status.ok{color:#15803d}.promo-status.err{color:#b42318}.promo-hint{font-size:10px;color:#777;margin:6px 0 0}.launch-tag{display:inline-flex;align-items:center;border:1px solid #c9d4ff;background:#eef2ff;color:#1740c9;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:800;letter-spacing:.04em;margin-top:13px}
+  </style>
 </head>
 <body>
+  <div class="sale-bar">🔥 LAUNCH SALE — <b>15% OFF</b> · CODE <span class="sale-code">LAUNCH15</span> · FIRST 10 CUSTOMERS · MAX $25 OFF</div>
   <header class="site-header">
     <div class="wrap nav">
       <a class="logo" href="#top" aria-label="Mikye Media home"><span class="logo-mark">M</span><span>Mikye Media</span></a>
@@ -23,6 +27,7 @@
         <span class="eyebrow">SOCIAL USERNAME MARKETPLACE</span>
         <h1>Find a handle<br>that fits.</h1>
         <p>Browse short and premium usernames across Instagram, TikTok, X and Snapchat. Search the live inventory, choose a listing, and submit your payment for manual verification.</p>
+        <div class="launch-tag">LAUNCH15 · 15% OFF · MAX $25</div>
         <div class="hero-search"><span>@</span><input id="heroSearch" type="search" placeholder="Search usernames" autocomplete="off" spellcheck="false"><button id="heroSearchBtn">Search</button></div>
         <div class="hero-meta"><div><strong id="statTotal">—</strong><span>available</span></div><div><strong>4</strong><span>platforms</span></div><div><strong>4</strong><span>payment methods</span></div></div>
       </div>
@@ -64,6 +69,7 @@
 
     <section id="faq" class="wrap faq-section"><div class="faq-heading"><span class="eyebrow">FAQ</span><h2>Questions before buying?</h2></div><div class="faq-list">
       <details open><summary>Does submitting checkout mean my payment is approved?<span>+</span></summary><p>No. Your payment reference helps locate the transaction, but payment is manually verified before fulfillment.</p></details>
+      <details><summary>How does LAUNCH15 work?<span>+</span></summary><p>The first 10 customers can apply LAUNCH15 at checkout for 15% off, up to $25. A successful promo application holds that discount slot for 20 minutes while you send payment.</p></details>
       <details><summary>How fast is delivery?<span>+</span></summary><p>Delivery is manual and depends on payment verification and securing the selected handle. Transfer details are emailed when ready.</p></details>
       <details><summary>Why did a handle disappear?<span>+</span></summary><p>It may be reserved by another checkout, sold, or removed because availability changed.</p></details>
       <details><summary>Which email should I use?<span>+</span></summary><p>Use an email you actively control. Fulfillment details and important order updates are sent there.</p></details>
@@ -79,8 +85,9 @@
 
   <dialog id="checkoutModal" class="modal"><form method="dialog" class="modal-card checkout-card" id="checkoutForm">
     <button class="close" value="cancel" aria-label="Close">×</button><span class="modal-label">Checkout</span>
-    <div class="checkout-head"><div><h2 id="checkoutHandle">@handle</h2><p id="checkoutMeta">Platform · Type</p></div><strong id="checkoutPrice">$0</strong></div>
-    <p class="modal-muted">Choose a payment method, send the exact amount, then submit the transaction details for manual verification.</p>
+    <div class="checkout-head"><div><h2 id="checkoutHandle">@handle</h2><p id="checkoutMeta">Platform · Type</p></div><div class="checkout-price-stack"><span id="checkoutOriginalPrice" class="old-price">$0</span><strong id="checkoutPrice">$0</strong></div></div>
+    <div class="promo-box"><span class="promo-label">Launch promo</span><div class="promo-row"><input id="promoCode" type="text" maxlength="20" placeholder="LAUNCH15" autocomplete="off"><button id="applyPromo" type="button">Apply</button></div><div id="promoStatus" class="promo-status">15% off for the first 10 customers, up to $25 off.</div></div>
+    <p class="modal-muted">Choose a payment method, send the exact amount shown below, then submit the transaction details for manual verification.</p>
     <div id="paymentMethods" class="payment-methods"></div><div id="paymentInstructions" class="payment-box">Choose a payment method.</div>
     <div class="form-grid"><label class="full-span">Email<input required id="buyerEmail" type="email" placeholder="you@example.com"></label><label>Sender / payer<input required id="payerName" type="text" maxlength="100" placeholder="Name or payment handle"></label><label>Transaction / reference ID<input required id="paymentRef" type="text" maxlength="160" placeholder="Confirmation or tx hash"></label><label class="full-span">Optional note<textarea id="buyerNote" maxlength="500" placeholder="Anything we should know?"></textarea></label></div>
     <label class="confirm-row checkout-policy-links"><input id="paymentConfirm" type="checkbox" required><span>I already sent the exact amount, understand payment will be manually verified, and agree to the <a href="/terms.html" target="_blank">Terms</a>, <a href="/refund-policy.html" target="_blank">Refund Policy</a>, <a href="/delivery-policy.html" target="_blank">Delivery Policy</a>, and <a href="/privacy.html" target="_blank">Privacy Policy</a>.</span></label>
